@@ -1,0 +1,51 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import './App.css';
+import List from './component/List';
+import withListLoading from './component/withListLoading';
+import AddItem from './component/AddItem';
+import { Container, Row, Col } from 'react-bootstrap';
+
+function App() {
+  const ListLoading = withListLoading(List);
+  const [appState, setAppState] = useState({
+    loading: false,
+    repos: null,
+  });
+
+  useEffect(() => {
+    setAppState({ loading: true });
+
+    const apiUrl = 'http://localhost:51191/todo';
+    axios.get(apiUrl).then((repos) => {
+      const allRepos = repos.data;
+      setAppState({ loading: false, repos: allRepos });
+    }).catch(error => console.log(error));
+
+  }, [setAppState]);
+
+
+  callbackFunction(() => {
+    console.log("Callback received!");
+
+  });
+
+  return (
+      <Container fluid>
+        <Row>
+          <Col md={12}>
+            <div style={{textAlign: 'center'}}><h1>ToDo Application</h1></div>
+          </Col>
+        </Row>
+        <Row>
+          <Col md={6}>
+            <ListLoading isLoading={appState.loading} repos={appState.repos} />
+          </Col>
+          <Col md={6}>
+            <AddItem callbackFunction = {this.callbackFunction}></AddItem>
+          </Col>
+        </Row>
+      </Container>
+  );
+}
+export default App;
