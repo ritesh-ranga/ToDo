@@ -1,12 +1,12 @@
 # ToDo Application
 
-This is a web application for managing ToDos.
+This application enables the user to manage his todos. A user can add new todos, mark existing ones as done once completed and then finally delete the completed ones.
 
 ## Description
 
 ### Front-end
 The front-end application is a SPA written with React.
-'react-bootstrap' has been used to make UI user-friendly.
+‘react-bootstrap’ has been used to design a user friendly UI. The react client app folder has been placed inside the solution folder for convenience, but it can be placed essentially anywhere for hosting.\
 The front-end:
   - can read entries from the WebAPI and visualise them
   - allows editing existing entries
@@ -15,8 +15,8 @@ The front-end:
 
 
 ### Back-end
-.NET Core WebAPI is used as the back-end written in C#. The WebAPI exposes CRUD operations for the entity 'ToDo'. 
-EF Core has been used as the ORM and the in-memory database has been used to persist the data.
+.NET Core WebAPI is used as the back-end written in C#. The back-end WebAPI exposes all the CRUD operations for the entity 'ToDo' as GET, POST, PUT, DELETE.\
+EF Core has been used as the ORM. To persist data, the in-memory database has been used. The same can be replaced with any other RDBMS.
 
 
 ## License
